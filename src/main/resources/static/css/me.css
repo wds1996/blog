@@ -1,0 +1,276 @@
+body{
+	background-image: url("../imags/bg1.png");
+}
+.m-teal {
+	color: #00B5AD !important;
+}
+/*文字相关*/
+.me-text{
+	font-family: Microsoft Yahei, Times, TimesNR, 'New Century Schoolbook', Georgia, 'New York', serif; !important;
+	font-weight: 300 !important;
+	letter-spacing: 1px !important;
+	line-height: 1.6;
+	font-size: 13px;
+	padding: 0 0 0 2px;
+	opacity: 0.8 !important;
+}
+.me-text1{
+	font-weight: 500 !important;
+	font-size: 13px;
+	letter-spacing: 1px !important;
+	line-height: 1.5;
+	padding-right: 1em;
+}
+.me-text-thin{
+	font-weight: 300 !important;
+}
+.me-text-sise{
+	font-size: 13px;
+}
+.me-text-spaced{
+	letter-spacing: 1px !important;
+}
+.me-text-lined{
+	line-height: 1.5;
+}
+.me-opacity-mini{
+	opacity: 0.8 !important;
+}
+.me-opacity-small{
+	opacity: 0.5 !important;
+}
+.me-opacity-big{
+	opacity: 0.3 !important;
+}
+/*位置相关*/
+.me-top-right{
+	position: absolute;
+	top: 1.2em;
+	right: 1.2em;
+}
+.me-top-right1{
+	position: absolute;
+	right: 1em;
+}
+.me-top1{
+	top: 1.2em;
+}
+/*边距相关*/
+.padded{
+	padding: 3em 2em 2em 2em !important;
+}
+.me-margin-t1{
+	margin-top: 0.5em !important;
+}
+.me-margin-t2{
+	margin-top: 1em !important;
+}
+.me-margin-l1{
+	margin-left: 1em !important;
+}
+.me-margin-l2{
+	margin-left: 2em !important;
+}
+.me-margin-b1{
+	margin-bottom: 1em !important;
+}
+.me-margin-segments{
+	margin: 0em 0em 2em 0em !important;
+}
+.m-padded-mini {
+	padding: 0.3em !important;
+}
+.me-padding-all{
+	padding: 0.4em !important;
+}
+.me-padding-all1{
+	padding: 0.6em !important;
+}
+.me-padding-all0{
+	padding: 0em !important;
+}
+.me-padding-top0{
+	padding-top: 0em !important;
+}
+.me-padding-top2{
+	padding-top: 0.6em !important;
+}
+.me-padding-top1{
+	padding-top: 1em !important;
+}
+.me-margin-all{
+	margin: 0em 1em 0.8em 1em !important;
+}
+.me-margin-all1{
+	margin: 0em 0.5em 1em 2.5em !important;
+}
+.me-margin-all2{
+	margin: 0em 0.9em 0.5em 0.8em !important;
+}
+.me-margin-tag{
+	margin: 0em 0.5em 1em 1.5em !important;
+}
+.me-margin-mini{
+	margin-top: 0.3em !important;
+	margin-bottom: 0.3em !important;
+}
+.me-margin0{
+	margin-top: 0em !important;
+	margin-bottom: 0em !important;
+}
+.me-margin1{
+	margin-top: 1em !important;
+	margin-bottom: 1em !important;
+}
+.me-margin2{
+	margin-top: 2em !important;
+	margin-bottom: 2em !important;
+}
+.me-margin3{
+	margin-top: 3em !important;
+	margin-bottom: 3em !important;
+}
+.me-marginx{
+	margin-left: 0.5em !important;
+	margin-right: 0.5em !important;
+}
+.me-marginx1{
+	margin-left: 1em !important;
+	margin-right: 1em !important;
+}
+.me-marginx2{
+	margin-left: 2em !important;
+	margin-right: 2em !important;
+}
+.me-margin-t2b1{
+	margin-top: 2em !important;
+	margin-bottom: 1em !important;
+}
+.me-padding-x{
+	padding-left: 3em !important;
+	padding-right: 3em !important;
+}
+.me-padding-toc{
+	padding-left: 0.8em !important;
+	padding-right: 0em !important;
+}
+.me-padding-x2{
+	padding-left: 1em !important;
+	padding-right: 1em !important;
+}
+.me-padding-x3{
+	padding-left: 2em !important;
+	padding-right: 2em !important;
+}
+.me-padding-x1{
+	padding-left: 0.4em !important;
+	padding-right: 0.4em !important;
+}
+.me-padding-bt-small{
+	padding-top: 0em !important;
+	padding-bottom: 0.5em !important;
+}
+.me-padding-b1t2{
+	padding-top: 1.8em !important;
+	padding-bottom: 1em !important;
+}
+.me-padding-bt-big{
+	padding-top: 14em !important;
+	padding-bottom: 10em !important;
+}
+.me-padding-bt{
+	padding-top: 0em !important;
+	padding-bottom: 1em !important;
+}
+.me-padding-bt1{
+	padding-top: 0em !important;
+	padding-bottom: 1.5em !important;
+}
+.me-padding0{
+	padding-top: 0.1em !important;
+	padding-bottom: 0.1em !important;
+}
+.me-padding1{
+	padding-top: 0.3em !important;
+	padding-bottom: 0.3em !important;
+}
+.me-padding2{
+	padding-top: 0.5em !important;
+	padding-bottom: 0.5em !important;
+}
+.me-padding3{
+	padding-top: 1.5em !important;
+	padding-bottom: 1.5em !important;
+}.me-padding4{
+	padding-top: 2em !important;
+	padding-bottom: 1.5em !important;
+}
+.me-padding5{
+	padding-top: 3em !important;
+	padding-bottom: 2em !important;
+}
+.me-padding-t1{
+	padding-top: 1em !important;
+}
+.me-padding-t3b2{
+	padding-top: 3em !important;
+	padding-bottom: 2em !important;
+}
+.me-padding-t1b2{
+	padding-top: 1em !important;
+	padding-bottom: 2em !important;
+}
+.me-padding-l0r1{
+	padding-left: 0em !important;
+	padding-right: 2em !important;
+}
+.me-padding-r2{
+	padding-right: 6em !important;
+}
+/*display相关*/
+.me-inline-block{
+	display: inline-block;
+}
+.me-container{
+	max-width: 75em;
+	margin: auto;
+}
+.me-container-small{
+	max-width: 65em;
+	margin: auto;
+}
+.mobile-show{
+		display: none !important;
+}
+/*position*/
+.right-button{
+	position: fixed !important;
+	right: 0.6em !important;
+	bottom: 40% !important;
+	z-index: 10 !important;
+}
+@media screen and (max-width: 768px){
+	.mobile-hide{
+		display: none !important;
+	}
+	.mobile-show{
+		display: block !important;
+	}
+	.me-padding-x{
+		padding-left: 0em !important;
+		padding-right: 0em !important;
+	}
+	.me-padding-l0r1{
+	padding-left: 0em !important;
+	padding-right: 0em !important;
+	}
+	.mobile-wide-all{
+		width: 80% !important;
+	}
+	.me-margin-all1{
+		margin: 0em 0.5em 1em 0.5em !important;
+	}
+	.me-margin-tag{
+	margin: 0em 0.5em 1em 0.5em !important;
+	}
+}

@@ -1,0 +1,17 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/blog?userUnicode=true&amp;characterEncoding=utf8
+    username: root
+    password: 19960415@Wang
+  jpa:
+    hibernate:
+      ddl-auto: none
+    show-sql: true
+logging:
+  level:
+    root: warn
+    com.tuiseblog: info
+  file: log/blog-dev.log
+server:
+  port: 80
