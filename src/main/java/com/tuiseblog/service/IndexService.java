@@ -18,9 +18,6 @@ import java.util.Map;
 public interface IndexService {
     Page<Blog> listBlog(Pageable pageable);
     Blog findById(Long id);
-    Page<Blog> findByType(Type type);
-    Page<Blog> findByTag(Tag tag);
-    List<Blog> findNewBlog();
     List<Type> listTypeTop(Integer size);
     List<Tag> listTagTop(Integer size);
     List<Blog> listRecommendBlogTop(Integer size);

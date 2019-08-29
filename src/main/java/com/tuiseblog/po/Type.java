@@ -14,7 +14,7 @@ import java.util.List;
 public class Type {
     //主键
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     //分类的名称
     @NotBlank

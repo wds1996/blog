@@ -19,10 +19,10 @@
   <div class="ui container">
     <div class="ui inverted stackable secondary menu">
       <h2 class="ui teal header item">Blog管理</h2>
-      <a href="#" th:href="@{/admin/bloglist}" class="nav-item item mobile-hide" th:classappend="${n==1} ? 'active'"><i class="small home icon"></i>博客</a>
-      <a href="#" th:href="@{/admin/typelist}" class=" nav-item item m-mobile-hide" th:classappend="${n==2} ? 'active'"><i class="small idea icon"></i>分类</a>
+      <a href="#" th:href="@{/admin/bloglist}" class="nav-item item m-mobile-hide" th:classappend="${n==1} ? 'active'"><i class="small home icon"></i>博客</a>
+      <a href="#" th:href="@{/admin/typelist}" class="nav-item item m-mobile-hide" th:classappend="${n==2} ? 'active'"><i class="small idea icon"></i>分类</a>
       <a href="#" th:href="@{/admin/taglist}" class="nav-item item m-mobile-hide" th:classappend="${n==3} ? 'active'"><i class="small tags icon"></i>标签</a>
-      <div class="nav-item right menu mobile-hide">
+      <div class="nav-item right menu m-mobile-hide">
         <div class="ui dropdown item">
           <div class="text">
             <img src="https://unsplash.it/100/100?image=1005" th:src="${session.user.avatar}" alt="" class="ui avatar image">
@@ -31,7 +31,7 @@
           <i class="dropdown icon"></i>
           <div class="menu">
             <a href="#" th:href="@{/admin/userInfo}" class="item">修改资料</a>
-            <a href="#" th:href="@{/admin/passModify}" class="item">修改密码</a>
+            <a href="#" th:href="@{/admin/toModify}" class="item">修改密码</a>
             <a href="#" th:href="@{/admin/logout}" class="item">注销</a>
           </div>
         </div>
@@ -60,10 +60,14 @@
       </div>
       <div class="three wide column">
         <h4 class="ui inverted header">最新博客</h4>
-        <div class="ui inverted link list">
-          <a href="#" class="item" style="font-size: 14px;padding-bottom: 8px">用户故事（User Story）</a>
-          <a href="#" class="item" style="font-size: 14px;padding-bottom: 8px">关于学习的小技巧</a>
-          <a href="#" class="item" style="font-size: 14px;padding-bottom: 8px">高效的Coding Skill</a>
+        <div id="newblog-container">
+          <div class="ui inverted link list" th:fragment="newblogList">
+            <a href="#" th:href="@{/blog/{id}(id=${blog.id})}" target="_blank" class="item m-text-thin" th:each="blog : ${newblogs}" th:text="${blog.title}">用户故事（User Story）</a>
+            <!--/*-->
+            <a href="#" class="item" style="font-size: 14px;padding-bottom: 8px">关于学习的小技巧</a>
+            <a href="#" class="item" style="font-size: 14px;padding-bottom: 8px">高效的Coding Skill</a>
+            <!--*/-->
+          </div>
         </div>
       </div>
       <div class="three wide column">
@@ -91,7 +95,12 @@
   <script src="../static/expand/qrcodejs/qrcode.min.js" th:src="@{/expand/qrcodejs/qrcode.min.js}"></script>
   <script src="../../static/expand/editormd/editormd.min.js" th:src="@{/expand/editormd/editormd.min.js}"></script>
   <script src="../static/expand/waypoint/jquery.waypoints.min.js" th:src="@{/expand/waypoint/jquery.waypoints.min.js}"></script>
+  <script>
+      $('#newblog-container').load(/*[[@{/footer/newblog}]]*/"/footer/newblog");
+      $(".nav-button").click(function(){
+          $(".nav-item").toggleClass("mobile-hide");
+      });
+  </script>
 </th:block>
-
 </body>
 </html>

@@ -14,7 +14,7 @@ import java.util.List;
 public class Tag {
     //主键
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     //标签名称
     @NotBlank

@@ -1,7 +1,11 @@
 package com.tuiseblog.util;
 
+import javax.management.StringValueExp;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.text.Format;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 /**
  * Created by limi on 2017/10/15.
@@ -41,6 +45,6 @@ public class MD5Utils {
 
 
     public static void main(String[] args) {
-        System.out.println(code("123456"));
+        //System.out.println(code("940330530"));
     }
 }

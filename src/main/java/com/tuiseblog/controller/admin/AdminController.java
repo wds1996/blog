@@ -4,6 +4,7 @@ import com.tuiseblog.NotFoundException;
 import com.tuiseblog.po.Tag;
 import com.tuiseblog.po.Type;
 import com.tuiseblog.service.AdminService;
+import com.tuiseblog.util.MyBeanUtils;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
@@ -80,7 +81,7 @@ public class AdminController {
         if (type2==null){
             throw new  NotFoundException("该类型已不存在！");
         }
-        BeanUtils.copyProperties(type,type2);
+        BeanUtils.copyProperties(type,type2,MyBeanUtils.getNullPropertyNames(type));
         Type updateType = adminService.updateType(type2);
         if (updateType == null ) {
             attributes.addFlashAttribute("message", "更新失败");

@@ -43,7 +43,6 @@ public class BlogController {
         if (id!=null){
             Blog blog = blogService.findById(id);
             blog.init();
-           // System.out.println("这是ids字符串"+blog.getTagIds());
             model.addAttribute("blog",blog);
         }else {
             model.addAttribute("blog",new Blog());

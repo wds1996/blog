@@ -2,6 +2,8 @@ package com.tuiseblog.service.impl;
 import com.tuiseblog.NotFoundException;
 import com.tuiseblog.dao.BlogRepository;
 import com.tuiseblog.po.Blog;
+
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
@@ -20,6 +22,8 @@ import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -34,7 +38,14 @@ public class BlogServiceImpl implements BlogService {
     @Override
     public Blog addBlog(Blog blog) {
         if (blog.getId() == null) {
-            blog.setUpdateTime(blog.getCreateTime());
+            if (blog.getFlag()==null||"".equals(blog.getFlag())){
+                blog.setFlag("原创");
+            }
+            if (blog.getUpdateTime()==null||"".equals(blog.getUpdateTime())){
+                SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+                blog.setUpdateTime(formatter.format(new Date()));
+            }
+            blog.setCreateTime(blog.getUpdateTime());
             blog.setViews((int)(Math.random() * 100) + 1);
         } else {
             blog.setUpdateTime(blog.getCreateTime());

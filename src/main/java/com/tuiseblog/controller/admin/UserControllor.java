@@ -46,4 +46,40 @@ public class UserControllor {
         session.removeAttribute("user");
         return "redirect:/admin";
     }
+    //    修改密码页面
+    @GetMapping("/toModify")
+    public String toModify(){
+        return "admin/pswmodified";
+    }
+    //修改密码
+    @RequestMapping(value = "/passModify",method = RequestMethod.POST)
+    public String pswModify(User user,HttpSession session, RedirectAttributes redirectAttributes){
+        int i = userService.updatePassword(user);
+        if (i!=0){
+            redirectAttributes.addFlashAttribute("message","修改成功");
+            return "redirect:toModify";
+        }else {
+            redirectAttributes.addFlashAttribute("errormessage","对不起，修改密码出错了，请稍后重试！");
+            return "redirect:toModify";
+        }
+    }
+    //    修改资料页面
+    @GetMapping("/userInfo")
+    public String userInfo(){
+        return "admin/userinfo";
+    }
+    //修改资料
+    @RequestMapping(value = "/updateUser",method = RequestMethod.POST)
+    public String updateUser(User user,HttpSession session, RedirectAttributes redirectAttributes){
+        User user1 = userService.updateUser(user);
+        if (user1!=null){
+            session.removeAttribute("user");
+            user1.setPassword(null);
+            session.setAttribute("user",user1);
+            return "redirect:userInfo";
+        }else {
+            redirectAttributes.addFlashAttribute("errormessage","对不起，修改资料出错了，请稍后重试！");
+            return "redirect:userInfo";
+        }
+    }
 }

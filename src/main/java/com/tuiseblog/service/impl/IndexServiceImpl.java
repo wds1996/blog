@@ -51,21 +51,6 @@ public class IndexServiceImpl implements IndexService {
     }
 
     @Override
-    public Page<Blog> findByType(Type type) {
-        return null;
-    }
-
-    @Override
-    public Page<Blog> findByTag(Tag tag) {
-        return null;
-    }
-
-    @Override
-    public List<Blog> findNewBlog() {
-        return null;
-    }
-
-    @Override
     public List<Type> listTypeTop(Integer size) {
         Sort sort = new Sort(Sort.Direction.DESC,"blogs.size");
         Pageable pageable = new PageRequest(0,size,sort);

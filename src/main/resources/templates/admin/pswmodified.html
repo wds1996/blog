@@ -1,0 +1,164 @@
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head th:replace="admin/_fragments :: head(~{::title})">
+    <meta charset="utf-8">
+    <meta name="viewport" content="whdth=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
+    <link rel="stylesheet" href="../../static/css/me.css" th:href="@{/css/me.css}">
+    <title>修改密码</title>
+</head>
+<body>
+<!-- 导航 -->
+<nav th:replace="admin/_fragments :: menu(4)" class="ui inverted attached segment me-padding1">
+    <div class="ui container">
+        <div class="ui inverted stackable secondary menu">
+            <h2 class="ui teal header item">Blog管理</h2>
+            <a href="index.html" class="nav-item active item mobile-hide"><i class="small home icon"></i>博客</a>
+            <a href="typelist.html" class="nav-item item mobile-hide"><i class="small idea icon"></i>分类</a>
+            <a href="taglist.html" class="nav-item item mobile-hide"><i class="small tag icon"></i>标签</a>
+            <div class="nav-item right menu mobile-hide">
+                <div class="ui dropdown item">
+                    <div class="text">
+                        <img src="https://unsplash.it/100/100?image=1005" alt="" class="ui avatar image">
+                        褪色
+                    </div>
+                    <i class="dropdown icon"></i>
+                    <div class="menu">
+                        <a href="#" th:href="@{/admin/userInfo}" class="item">修改资料</a>
+                        <a href="#" th:href="@{/admin/passModify}" class="item">修改密码</a>
+                        <a href="#" th:href="@{/admin/logout}" class="item">注销</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <a href="#" class="ui nav-button black icon button mobile-show me-top-right">
+        <i class="sidebar icon"></i>
+    </a>
+</nav>
+<!-- 修改密码部分 -->
+<div class="ui middle aligned center aligned stackable grid">
+    <div class="column me-padding-bt-big2" style="width: 30em !important;">
+        <h2 class="ui teal image header">
+            <img src="../../static/imags/blog.png" th:src="@{/imags/blog.png}" class="image" style="width: 50px">
+            <div class="content">
+                博客用户修改密码
+            </div>
+        </h2>
+        <form id="modifyform" class="ui large form" method="post" action="#" th:action="@{/admin/passModify}">
+            <div class="ui stacked segment" style="text-align: left !important;">
+                <input name="id" type="hidden" value="" th:value="${session.user.id}"/>
+                <div class="field" style="margin-bottom: 5px !important;">
+                    <div class="me-padding1" style="margin-left: 5px !important;"> 输入新密码</div>
+                    <span style="margin-left: 5px !important;" id="psspan"></span>
+                    <input type="password" id="password1" name="password" placeholder="新密码" onBlur="pdps()">
+                </div>
+                <div class="field" style="margin-bottom: 5px !important;">
+                    <div class="me-padding1" style="margin-left: 5px !important;">确认新密码</div>
+                    <span style="margin-left: 5px !important;" id="ps2span"></span>
+                    <input type="password" id="password2" name="password2" placeholder="确认密码" onBlur="pd2ps()">
+                </div>
+                <button id="submit-btn" class="ui fluid large teal button" type="button">确认修改</button>
+            </div>
+            <div class="ui error message"></div>
+            <div id="errormessage" class="ui mini negative message" th:unless="${#strings.isEmpty(errormessage)}">
+                对不起，修改密码失败，请稍后重试！
+            </div>
+            <div id="message" class="ui mini message" th:unless="${#strings.isEmpty(message)}" th:text="${message}">
+                修改成功
+            </div>
+        </form>
+        <div class="ui message">
+            忘记密码？ <a href="#">联系管理员</a>
+        </div>
+    </div>
+</div>
+<!-- 修改密码部分结束 -->
+<!-- 底部 -->
+<footer th:replace="admin/_fragments :: footer" class="ui inverted vertical segment me-padding5">
+    <div class="ui center aligned container">
+        <div class="ui stackable inverted divided grid">
+            <div class="three wide column">
+                <div class="ui inverted link list">
+                    <div class="item">
+                        <img src="../../static/imags/wechat.png" th:src="@{/imags/wechat.png}" class="ui rounded image"
+                             style="width: 110px">
+                    </div>
+                </div>
+            </div>
+            <div class="three wide column">
+                <h4 class="ui inverted header">最新博客</h4>
+                <div class="ui inverted link list">
+                    <a href="#" class="item" style="font-size: 14px;padding-bottom: 8px">用户故事（User Story）</a>
+                    <a href="#" class="item" style="font-size: 14px;padding-bottom: 8px">关于学习的小技巧</a>
+                    <a href="#" class="item" style="font-size: 14px;padding-bottom: 8px">高效的Coding Skill</a>
+                </div>
+            </div>
+            <div class="three wide column">
+                <h4 class="ui inverted header">联系我</h4>
+                <div class="ui inverted link list">
+                    <a href="#" class="item" style="font-size: 14px;padding-bottom: 8px">QQ：1005339793</a>
+                    <a href="#" class="item" style="font-size: 14px;padding-bottom: 8px">邮箱：tuise1996@163.com</a>
+                </div>
+            </div>
+            <div class="seven wide column">
+                <h4 class="ui inverted header">Tuise Say</h4>
+                <p class="me-text-thin me-text-spaced me-opacity-mini me-text-lined" style="font-size: 13px">
+                    这是一个个人博客，这是测试版本1.0，用于测试，展示博客，发表个人博客，以及应聘作品展示平台...</p>
+            </div>
+        </div>
+        <div class="ui inverted section divider"></div>
+        <p class="me-text-thin me-text-spaced me-opacity-big">Copyright © 2019-2019 Tuise Designed by Lirenmi</p>
+    </div>
+</footer>
+<!--/*/<th:block th:replace="_fragments :: script">/*/-->
+<script src="https://code.jquery.com/jquery-3.0.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
+<!--/*/</th:block>/*/-->
+<script>
+    $(".nav-button").click(function(){
+        $(".nav-item").toggleClass("mobile-hide");
+    });
+    $('.ui.dropdown').dropdown();
+    window.onload = function () {
+        var message = document.getElementById("message").innerText;
+        if (message == "修改成功") {
+            alert("密码修改成功，请重新登录!");
+            location.href = "[[@{/admin/logout}]]";
+        }
+    };
+
+    function pdps() {
+        var ps = document.getElementById("password1").value;
+        var psspan = document.getElementById("psspan");
+        var res = /^\w{6,12}$/i;
+        if (res.test(ps)) {
+            psspan.innerHTML = "".fontcolor("green");
+        } else {
+            psspan.innerHTML = "密码长度应为6-12位".fontcolor("red");
+        }
+    }
+
+    function pd2ps() {
+        var ps = document.getElementById("password1").value;
+        var res = document.getElementById("password2").value;
+        var psspan = document.getElementById("ps2span");
+        if (ps == res) {
+            psspan.innerHTML = "".fontcolor("green");
+        } else {
+            psspan.innerHTML = "两次密码输入不一致".fontcolor("red");
+        }
+    }
+    $('#submit-btn').click(function () {
+        var ps = $('[id="password1"]').val();
+        var res = $('[id="password2"]').val();
+        var psspan = $('[id="psspan"]').val();
+        if (ps != res && psspan=="") {
+            alert("请按要求输入");
+            return false;
+        }else {
+            $('#modifyform').submit();
+        }
+    });
+</script>
+</body>
+</html>

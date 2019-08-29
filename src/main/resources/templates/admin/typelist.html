@@ -70,7 +70,7 @@
 				<td data-label="title" th:text="${iterStat.count}">1</td>
 				<td data-label="type" th:text="${type.name}">旅游摄影</td>
 				<td data-label="process">
-					<a href="#" th:href="@{/admin/updatetype(id=${type.id})}" class="ui blue label button">修改</a>
+					<a href="#" class="ui blue label button modifyButtom" th:onclick="'javascript:update(\''+${type.id}+'\');'">修改</a>
 					<a href="#" th:href="@{/admin/delettype(id=${type.id})}" class="ui red label button">删除</a>
 				</td>
 			</tr>
@@ -93,6 +93,24 @@
 		</table>
 	</div>
 </div>
+<!--修改弹出层-->
+<div class="ui modal" style="width: 30em !important;text-align: center !important;">
+	<i class="close icon"></i>
+	<div class="header">
+		修改类型
+	</div>
+	<form action="" th:action="@{/admin/updatetype}" class="ui form" method="post">
+		<div class="ui content">
+				<input id="uptypeid" name="id" type="hidden" value="">
+				<input id="uptypename" name="name" type="text" placeholder="类型名称" style="width: 29.8em !important;">
+		</div>
+		<div class="ui center aligned content me-margin1">
+			<div id="cancelButtom" class="ui red basic button" style="margin-right: 2em !important;">取消</div>
+			<div class="ui green basic submit button">确定</div>
+		</div>
+	</form>
+</div>
+<!--修改弹出层结束-->
 <!-- 底部 -->
 <footer th:replace="admin/_fragments :: footer" class="ui inverted vertical segment me-padding5">
 	<div class="ui center aligned container">
@@ -128,8 +146,10 @@
 		<p class="me-text-thin me-text-spaced me-opacity-big">Copyright © 2019-2019 Tuise Designed by Lirenmi</p>
 	</div>
 </footer>
+<!--/*/<th:block th:replace="_fragments :: script">/*/-->
 <script src="https://code.jquery.com/jquery-3.0.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
+<!--/*/</th:block>/*/-->
 <script type="text/javascript">
     $(".nav-button").click(function(){
         $(".nav-item").toggleClass("mobile-hide");
@@ -152,6 +172,14 @@
                 }]
             }
         }
+    });
+    //修改弹出层js
+	function update(id){
+		$('.ui.modal').modal('show');
+		$('#uptypeid').val(id);
+	}
+    $('#cancelButtom').click(function(){
+        $('.ui.modal').modal('hide');
     });
 </script>
 </body>

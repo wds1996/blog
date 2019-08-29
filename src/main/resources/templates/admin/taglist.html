@@ -60,9 +60,14 @@
 						<div class="menu">
 							<div class="item" data-value="teal"><label class="ui teal label"></label>茶色</div>
 							<div class="item" data-value="red"><label class="ui red label"></label>红色</div>
+							<div class="item" data-value="orange"><label class="ui orange label"></label>橙色</div>
 							<div class="item" data-value="yellow"><label class="ui yellow label"></label>黄色</div>
+							<div class="item" data-value="olive"><label class="ui olive label"></label>淡黄色</div>
+							<div class="item" data-value="green"><label class="ui green label"></label>绿色</div>
 							<div class="item" data-value="blue"><label class="ui blue label"></label>蓝色</div>
+							<div class="item" data-value="violet"><label class="ui violet label"></label>紫罗兰色</div>
 							<div class="item" data-value="purple"><label class="ui purple label"></label>紫色</div>
+							<div class="item" data-value="brown"><label class="ui brown label"></label>褐色</div>
 						</div>
 					</div>
 				</div>
@@ -86,7 +91,7 @@
 				<td data-label="type"  th:text="${tag.name}">旅游摄影</td>
 				<td data-label="color"><label class="ui large label" style="margin-top: 5px !important;" th:classappend="${tag.color}"></label></td>
 				<td data-label="process">
-					<a href="#" th:href="@{/admin/updatetag(id=${tag.id})}" class="ui blue label button">修改</a>
+					<a href="#" th:onclick="'javascript:update(\''+${tag.id}+'\');'" class="ui blue label button">修改</a>
 					<a href="#" th:href="@{/admin/delettag(id=${tag.id})}" class="ui red label button">删除</a>
 				</td>
 			</tr>
@@ -107,6 +112,48 @@
 		</table>
 	</div>
 </div>
+<!--修改弹出层-->
+<div class="ui modal" style="width: 40em !important;text-align: center !important;">
+	<i class="close icon"></i>
+	<div class="header">
+		修改类型
+	</div>
+	<form action="" th:action="@{/admin/updatetag}" class="ui form" method="post">
+		<div class="inline fields me-padding-top1">
+			<div class="field me-marginx1">
+				<input id="tagid" name="id" type="hidden" value="">
+				<div class="ui left icon input" style="width: 20em !important;">
+					<i class="heading icon"></i>
+					<input name="name" type="text" placeholder="标签名称">
+				</div>
+			</div>
+			<div class="field me-marginx1">
+				<div class="ui selection dropdown">
+					<input type="hidden" name="color">
+					<i class="dropdown icon"></i>
+					<div class="default text">颜色</div>
+					<div class="menu">
+						<div class="item" data-value="teal"><label class="ui teal label"></label>茶色</div>
+						<div class="item" data-value="red"><label class="ui red label"></label>红色</div>
+						<div class="item" data-value="orange"><label class="ui orange label"></label>橙色</div>
+						<div class="item" data-value="yellow"><label class="ui yellow label"></label>黄色</div>
+						<div class="item" data-value="olive"><label class="ui olive label"></label>淡黄色</div>
+						<div class="item" data-value="green"><label class="ui green label"></label>绿色</div>
+						<div class="item" data-value="blue"><label class="ui blue label"></label>蓝色</div>
+						<div class="item" data-value="violet"><label class="ui violet label"></label>紫罗兰色</div>
+						<div class="item" data-value="purple"><label class="ui purple label"></label>紫色</div>
+						<div class="item" data-value="brown"><label class="ui brown label"></label>褐色</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="ui center aligned content me-margin1">
+			<div id="cancelButtom" class="ui red basic button" style="margin-right: 2em !important;">取消</div>
+			<div class="ui green basic submit button">确定</div>
+		</div>
+	</form>
+</div>
+<!--修改弹出层结束-->
 <!-- 底部 -->
 <footer th:replace="admin/_fragments :: footer" class="ui inverted vertical segment me-padding5">
 	<div class="ui center aligned container">
@@ -142,8 +189,10 @@
 		<p class="me-text-thin me-text-spaced me-opacity-big">Copyright © 2019-2019 Tuise Designed by Lirenmi</p>
 	</div>
 </footer>
+<!--/*/<th:block th:replace="_fragments :: script">/*/-->
 <script src="https://code.jquery.com/jquery-3.0.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
+<!--/*/</th:block>/*/-->
 <script type="text/javascript">
     $(".nav-button").click(function(){
         $(".nav-item").toggleClass("mobile-hide");
@@ -173,6 +222,14 @@
                 }]
             }
         }
+    });
+    //修改弹出层js
+    function update(e){
+        $('.ui.modal').modal('show');
+        $('#tagid').val(e);
+    }
+    $('#cancelButtom').click(function(){
+        $('.ui.modal').modal('hide');
     });
 </script>
 </body>

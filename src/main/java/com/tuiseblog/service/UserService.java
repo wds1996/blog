@@ -8,5 +8,7 @@ import org.springframework.stereotype.Service;
  * @create 2019/8/15--10:55
  */
 public interface UserService {
-    public User userLogin(String username,String password);
+    User userLogin(String username,String password);
+    User updateUser(User user);
+    int updatePassword(User user);
 }

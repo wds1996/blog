@@ -14,7 +14,7 @@ import java.util.List;
 public class User {
     //主键
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     //昵称
     private String nickname;

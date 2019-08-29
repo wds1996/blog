@@ -25,4 +25,5 @@ public interface IndexRepository extends JpaRepository<Blog,Long> {
 
     @Query("select b from Blog b where function('date_format',b.updateTime,'%Y') = ?1")
     List<Blog> findByYear(String year);
+
 }

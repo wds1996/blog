@@ -46,7 +46,7 @@
 					</div>
 				</div>
 				<div class="ui bottom attached segment">
-					<a href="#" th:href="@{/tags/{id}(id=${tag.id})}" class="ui large label me-margin-tag" th:classappend="${tag.id==activeTagId} ? 'teal'" th:each="tag : ${tags}">
+					<a href="#" th:href="@{/tags/{id}(id=${tag.id})}" class="ui large basic label me-margin-tag" th:classappend="${tag.id==activeTagId} ? ${tag.color}" th:each="tag : ${tags}">
 						<span th:text="${tag.name}">方法论</span> <div class="detail" th:text="${#arrays.length(tag.blogs)}">23</div>
 					</a>
 				</div>
