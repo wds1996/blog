@@ -40,4 +40,9 @@ public class UserServiceImpl implements UserService {
     public int updatePassword(User user) {
         return userDao.updatePassword(MD5Utils.code(user.getPassword()),user.getId());
     }
+
+    @Override
+    public User findByName(String name) {
+        return userDao.findByUsername(name);
+    }
 }

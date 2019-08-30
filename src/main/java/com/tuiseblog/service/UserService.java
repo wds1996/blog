@@ -11,4 +11,5 @@ public interface UserService {
     User userLogin(String username,String password);
     User updateUser(User user);
     int updatePassword(User user);
+    User findByName(String name);
 }

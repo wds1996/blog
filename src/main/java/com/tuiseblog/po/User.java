@@ -26,6 +26,12 @@ public class User {
     private String email;
     //头像
     private String avatar;
+    //用户描述
+    private String userinfo;
+    //个人爱好
+    private String userlike;
+    //个人标签
+    private String usertag;
     //用户类型
     private Integer type;
     //创建时间
@@ -89,6 +95,30 @@ public class User {
         this.avatar = avatar;
     }
 
+    public String getUserinfo() {
+        return userinfo;
+    }
+
+    public void setUserinfo(String userinfo) {
+        this.userinfo = userinfo;
+    }
+
+    public String getUserlike() {
+        return userlike;
+    }
+
+    public void setUserlike(String userlike) {
+        this.userlike = userlike;
+    }
+
+    public String getUsertag() {
+        return usertag;
+    }
+
+    public void setUsertag(String usertag) {
+        this.usertag = usertag;
+    }
+
     public Integer getType() {
         return type;
     }
@@ -131,9 +161,13 @@ public class User {
                 ", password='" + password + '\'' +
                 ", email='" + email + '\'' +
                 ", avatar='" + avatar + '\'' +
+                ", userinfo='" + userinfo + '\'' +
+                ", userlike='" + userlike + '\'' +
+                ", usertag='" + usertag + '\'' +
                 ", type=" + type +
                 ", createTime=" + createTime +
                 ", updateTime=" + updateTime +
+                ", blogs=" + blogs +
                 '}';
     }
 }

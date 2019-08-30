@@ -4,11 +4,11 @@
     <meta name="viewport" content="whdth=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
     <link rel="stylesheet" href="../../static/css/me.css" th:href="@{/css/me.css}">
-    <title>修改密码</title>
+    <title>修改信息</title>
 </head>
 <body>
 <!-- 导航 -->
-<nav th:replace="admin/_fragments :: menu(0)" class="ui inverted attached segment me-padding1">
+<nav th:replace="admin/_fragments :: menu(4)" class="ui inverted attached segment me-padding1">
     <div class="ui container">
         <div class="ui inverted stackable secondary menu">
             <h2 class="ui teal header item">Blog管理</h2>
@@ -36,7 +36,64 @@
     </a>
 </nav>
 <!-- 修改用户信息部分 -->
+<div class="me-padding3 me-margin0 me-container">
+    <div class="ui container">
+        <div class="ui success message" th:unless="${#strings.isEmpty(message)}">
+            <i class="close icon"></i>
+            <div class="header">提示：</div>
+            <p id="message" th:text="${message}">恭喜，操作成功！</p>
+        </div>
+        <form id="blog-form" action="#" th:action="@{/admin/updateUser}" method="post" class="ui segment form">
+            <input name="id" type="hidden" th:value="${session.user.id}">
+            <div class="field required me-padding-x2">
 
+            </div>
+            <div class="field required  me-padding-x2">
+                <div class="ui left labeled input">
+                    <label class="ui compact teal basic label">头像地址</label>
+                    <input name="avatar" type="text" th:placeholder="头像引用地址" th:value="${session.user.avatar}">
+                </div>
+            </div>
+            <div class="two fields">
+                <div class="field required me-marginx1">
+                    <div class="ui left labeled input">
+                        <label class="ui compact teal basic label">昵称</label>
+                        <input name="nickname" type="text" th:placeholder="请输入昵称" th:value="${session.user.nickname}">
+                    </div>
+                </div>
+                <div class="field required me-marginx1">
+                    <div class="ui left labeled input">
+                        <label class="ui compact teal basic label">邮箱</label>
+                        <input name="email" type="email" th:placeholder="请输入邮箱" th:value="${session.user.email}">
+                    </div>
+                </div>
+            </div>
+            <div class="required field me-padding-x2">
+                个人爱好：
+                <textarea name="userlike" th:text="${session.user.userlike}" placeholder="请输入个人爱好标签，注意用空格隔开" maxlength="100" style="height: 5em !important;min-height: 5em !important;margin-top: 8px;"></textarea>
+            </div>
+            <div class="required field me-padding-x2">
+                个人技能：
+                <textarea name="usertag" th:text="${session.user.usertag}" placeholder="请输入个人技能标签，注意用空格隔开" maxlength="100" style="height: 5em !important;min-height: 5em !important;margin-top: 8px;"></textarea>
+            </div>
+            <div class="required field me-padding-x2">
+                个人描述：
+                <textarea name="userinfo" th:text="${session.user.userinfo}" placeholder="个人描述,最多可输入150字..." maxlength="150" style="height: 8em !important;margin-top: 8px;"></textarea>
+            </div>
+            <!-- 校验提示内容 -->
+            <div class="ui error message"></div>
+            <div class="ui success message" th:unless="${#strings.isEmpty(message)}">
+                <i class="close icon"></i>
+                <div class="header">提示：</div>
+                <p th:text="${message}">恭喜，操作成功！</p>
+            </div>
+            <div class="ui right aligned container me-margin-t2b1">
+                <button type="button" class="ui button" onclick="window.history.go(-1)">返回</button>
+                <button class="ui teal submit button">确认修改</button>
+            </div>
+        </form>
+    </div>
+</div>
 <!-- 修改用户信息结束 -->
 <!-- 底部 -->
 <footer th:replace="admin/_fragments :: footer" class="ui inverted vertical segment me-padding5">
@@ -79,5 +136,67 @@
 <script src="https://code.jquery.com/jquery-3.0.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
 <!--/*/</th:block>/*/-->
+<script>
+    window.onload = function () {
+        var message = document.getElementById("message").innerText;
+        if (message == "修改成功") {
+            alert("资料修改成功，现在返回博客列表!");
+            location.href = "[[@{/admin/bloglist}]]";
+        }
+    };
+    //消息提示关闭初始化
+    $('.message .close')
+        .on('click', function () {
+            $(this)
+                .closest('.message')
+                .transition('fade');
+        });
+    $('.ui.form').form({
+        fields : {
+            avatar : {
+                identifier: 'avatar',
+                rules: [{
+                    type : 'empty',
+                    prompt : '头像：请输头像地址'
+                }]
+            },
+            nickname : {
+                identifier: 'nickname',
+                rules: [{
+                    type : 'empty',
+                    prompt : '昵称：请输入昵称'
+                }]
+            },
+            email : {
+                identifier: 'email',
+                rules: [{
+                    type : 'email',
+                    prompt: '标题：请输入邮箱地址'
+                }]
+            },
+            userlike : {
+                identifier: 'userlike',
+                rules: [{
+                    type : 'empty',
+                    prompt: '个人爱好：请输入个人爱好标签'
+                }]
+            },
+            usertag : {
+                identifier: 'usertag',
+                rules: [{
+                    type : 'empty',
+                    prompt: '个人技能：请输入个人技能标签'
+                }]
+            },
+            userinfo : {
+                identifier: 'userinfo',
+                rules: [{
+                    type : 'empty',
+                    prompt: '个人描述：请输入个人描述'
+                }]
+            }
+        }
+    });
+</script>
 </body>
 </html>

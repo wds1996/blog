@@ -3,9 +3,11 @@ package com.tuiseblog.controller;
 import com.tuiseblog.po.Blog;
 import com.tuiseblog.po.Tag;
 import com.tuiseblog.po.Type;
+import com.tuiseblog.po.User;
 import com.tuiseblog.service.AdminService;
 import com.tuiseblog.service.BlogService;
 import com.tuiseblog.service.IndexService;
+import com.tuiseblog.service.UserService;
 import com.tuiseblog.vo.BlogQuery;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -29,6 +31,8 @@ import java.util.List;
 public class IndexController {
     @Autowired
     IndexService indexService;
+    @Autowired
+    UserService userService;
     @Autowired
     AdminService adminService;
     @GetMapping("/")
@@ -87,7 +91,14 @@ public class IndexController {
         return "history";
     }
     @GetMapping("/about")
-    public String about(){
+    public String about(Model model){
+        User tuise = userService.findByName("tuise");
+        String[]  userlike=tuise.getUserlike().split(" ");
+        model.addAttribute("userlike",userlike);
+        String[]  usertag=tuise.getUsertag().split(" ");
+        model.addAttribute("usertag",usertag);
+        String[]  userinfo=tuise.getUserinfo().split("\n");
+        model.addAttribute("userinfo",userinfo);
         return "about";
     }
     @GetMapping("/footer/newblog")

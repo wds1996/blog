@@ -76,6 +76,7 @@ public class UserControllor {
             session.removeAttribute("user");
             user1.setPassword(null);
             session.setAttribute("user",user1);
+            redirectAttributes.addFlashAttribute("message","修改成功");
             return "redirect:userInfo";
         }else {
             redirectAttributes.addFlashAttribute("errormessage","对不起，修改资料出错了，请稍后重试！");
