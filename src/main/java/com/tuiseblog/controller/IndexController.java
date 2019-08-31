@@ -93,6 +93,10 @@ public class IndexController {
     @GetMapping("/about")
     public String about(Model model){
         User tuise = userService.findByName("tuise");
+        if (tuise==null){
+            tuise = new User();
+        }
+        model.addAttribute("picture",tuise.getPicture());
         String[]  userlike=tuise.getUserlike().split(" ");
         model.addAttribute("userlike",userlike);
         String[]  usertag=tuise.getUsertag().split(" ");

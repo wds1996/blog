@@ -54,6 +54,12 @@
                     <input name="avatar" type="text" th:placeholder="头像引用地址" th:value="${session.user.avatar}">
                 </div>
             </div>
+            <div class="field required  me-padding-x2">
+                <div class="ui left labeled input">
+                    <label class="ui compact teal basic label">大图地址</label>
+                    <input name="picture" type="text" th:placeholder="大图引用地址" th:value="${session.user.picture}">
+                </div>
+            </div>
             <div class="two fields">
                 <div class="field required me-marginx1">
                     <div class="ui left labeled input">
@@ -70,15 +76,15 @@
             </div>
             <div class="required field me-padding-x2">
                 个人爱好：
-                <textarea name="userlike" th:text="${session.user.userlike}" placeholder="请输入个人爱好标签，注意用空格隔开" maxlength="100" style="height: 5em !important;min-height: 5em !important;margin-top: 8px;"></textarea>
+                <textarea name="userlike" th:text="${session.user.userlike}==''?'暂无':${session.user.userlike}" placeholder="请输入个人爱好标签，注意用空格隔开" maxlength="100" style="height: 5em !important;min-height: 5em !important;margin-top: 8px;"></textarea>
             </div>
             <div class="required field me-padding-x2">
                 个人技能：
-                <textarea name="usertag" th:text="${session.user.usertag}" placeholder="请输入个人技能标签，注意用空格隔开" maxlength="100" style="height: 5em !important;min-height: 5em !important;margin-top: 8px;"></textarea>
+                <textarea name="usertag" th:text="${session.user.usertag}==''?'暂无':${session.user.usertag}" placeholder="请输入个人技能标签，注意用空格隔开" maxlength="100" style="height: 5em !important;min-height: 5em !important;margin-top: 8px;"></textarea>
             </div>
             <div class="required field me-padding-x2">
                 个人描述：
-                <textarea name="userinfo" th:text="${session.user.userinfo}" placeholder="个人描述,最多可输入150字..." maxlength="150" style="height: 8em !important;margin-top: 8px;"></textarea>
+                <textarea name="userinfo" th:text="${session.user.userinfo}==''?'我太难了，还没想好咋写':${session.user.userinfo}" placeholder="个人描述,最多可输入150字..." maxlength="150" style="height: 8em !important;margin-top: 8px;"></textarea>
             </div>
             <!-- 校验提示内容 -->
             <div class="ui error message"></div>
@@ -158,6 +164,13 @@
                 rules: [{
                     type : 'empty',
                     prompt : '头像：请输头像地址'
+                }]
+            },
+            picture : {
+                identifier: 'picture',
+                rules: [{
+                    type : 'empty',
+                    prompt : '大图：请输大图地址'
                 }]
             },
             nickname : {

@@ -26,6 +26,8 @@ public class User {
     private String email;
     //头像
     private String avatar;
+    //大图
+    private String picture;
     //用户描述
     private String userinfo;
     //个人爱好
@@ -89,6 +91,14 @@ public class User {
 
     public String getAvatar() {
         return avatar;
+    }
+
+    public String getPicture() {
+        return picture;
+    }
+
+    public void setPicture(String picture) {
+        this.picture = picture;
     }
 
     public void setAvatar(String avatar) {
@@ -161,6 +171,7 @@ public class User {
                 ", password='" + password + '\'' +
                 ", email='" + email + '\'' +
                 ", avatar='" + avatar + '\'' +
+                ", picture='" + picture + '\'' +
                 ", userinfo='" + userinfo + '\'' +
                 ", userlike='" + userlike + '\'' +
                 ", usertag='" + usertag + '\'' +
