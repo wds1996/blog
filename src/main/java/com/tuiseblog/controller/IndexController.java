@@ -93,15 +93,21 @@ public class IndexController {
     @GetMapping("/about")
     public String about(Model model){
         User tuise = userService.findByName("tuise");
-        if (tuise==null){
-            tuise = new User();
-        }
+        String[]  userlike = null;
+        String[]  usertag = null;
+        String[]  userinfo = null;
         model.addAttribute("picture",tuise.getPicture());
-        String[]  userlike=tuise.getUserlike().split(" ");
+        if (tuise.getUserlike()!=null){
+            userlike=tuise.getUserlike().split(" ");
+        }
+        if (tuise.getUsertag()!=null){
+            usertag=tuise.getUsertag().split(" ");
+        }
+        if (tuise.getUserinfo()!=null){
+            userinfo=tuise.getUserinfo().split("\n");
+        }
         model.addAttribute("userlike",userlike);
-        String[]  usertag=tuise.getUsertag().split(" ");
         model.addAttribute("usertag",usertag);
-        String[]  userinfo=tuise.getUserinfo().split("\n");
         model.addAttribute("userinfo",userinfo);
         return "about";
     }

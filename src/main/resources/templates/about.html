@@ -49,7 +49,8 @@
 						</div>	
 					</div>
 					<div class="ui attached segment">
-						<p th:each="info :${userinfo}" th:text="${info}==null?'暂时没想好写什么！':${info}"></p>
+						<p th:if="${info}==null">暂时还没想好写啥！</p>
+						<p th:each="info :${userinfo}" th:text="${info}"></p>
 						<!--/*-->
 						<p>一个编程爱好者，软件工程应届毕业生，爱好轮滑，爬山，读书，偶尔也玩游戏</p>
 						<p>
@@ -61,7 +62,7 @@
 					</div>
 					<!-- 这是标签卡片 -->
 					<div class="ui attached segment">
-						<div class="ui medium basic green label me-margin-all2" th:each="userlike :${userlike}" th:text="${userlike}==null?'暂无':${userlike}">编程</div>
+						<div class="ui medium basic green label me-margin-all2" th:each="userlike :${userlike}" th:text="${userlike}">编程</div>
 						<!--/*-->
 						<div class="ui medium basic red label me-margin-all2">看书</div>
 						<div class="ui medium basic orange label me-margin-all2">轮滑</div>
@@ -74,7 +75,7 @@
 						<!--*/-->
 					</div>
 					<div class="ui attached segment">
-						<div class="ui medium basic teal label me-margin-all" th:each="usertag :${usertag}" th:text="${usertag}==null?'暂无':${usertag}">Java</div>
+						<div class="ui medium basic teal label me-margin-all" th:each="usertag :${usertag}" th:text="${usertag}">Java</div>
 						<!--/*-->
 						<div class="ui medium basic teal label me-margin-all">Html</div>
 						<div class="ui medium basic teal label me-margin-all">Css</div>
